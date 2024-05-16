@@ -1,0 +1,43 @@
+---
+title: "Mexico´s City Public Revenue"
+author: "Israel Balbuena"
+date: "`r Sys.Date()`"
+output: ioslides_presentation
+
+
+---
+
+```{r setup, include=FALSE, echo=F}
+
+library(pacman)
+
+p_load(tidyverse, plotly, readxl)
+
+data <- read_excel("Data/Public.xlsx")
+
+```
+
+
+
+
+## Revenue Evolution
+
+```{r pressure, echo=F, message=F}
+
+ data %>% plot_ly(x= ~ YEAR, y = ~Impuestos, 
+                  name= "Impuestos", type="scatter", mode="lines") %>%      
+          add_trace(y = ~ Derechos, name= "Derechos", mode= "markers") %>%
+          add_trace(y = ~ `Participaciones federales`, name= "Participaciones",
+                    mode= "lines+markers") 
+          
+          
+
+
+
+
+```
+
+
+
+
+
